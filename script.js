@@ -7,10 +7,17 @@ function inputLenght() {
 }
 
 function createListElement() {
-    var li = document.createElement("li");
-    li.appendChild(document.createTextNode(input.value));
-    ul.appendChild(li);
-    input.value = "";
+	var div = document.createElement("div");
+	var li = document.createElement("li");
+	var delButton = document.createElement("button");
+	div.classList.add("wrapper");
+	ul.appendChild(div);
+	div.append(li, delButton);
+	li.classList.add("taskClass");
+	li.appendChild(document.createTextNode(input.value));
+	input.value = "";
+	delButton.classList.add("delClass");
+	delButton.innerHTML='Delete';
 }
 
 // Checks if there is any text in the enter tab
@@ -26,18 +33,23 @@ function addListAfterKeypress(event) {
     }
 }
 
-button.addEventListener("click", addListAfterClik)
-
-input.addEventListener("keypress", addListAfterKeypress)
-
-
-const list = document.getElementsByTagName('ul');
-
-for(let i=0; i<list.length; i++)
-{
-	list[i].addEventListener("click", function(event) {
-
-		event.target.classList.toggle('done');
-
-	});
+function doneTask(task) {
+	if (task.target.tagName === "LI"){
+		task.target.classList.toggle("done");
+	}
 }
+
+function deleteListElement(element) {
+	if (element.target.className === "delClass"){
+		element.target.parentElement.remove();
+	}
+}
+
+function handleUlClick (element) {
+	doneTask(element);
+	deleteListElement(element);
+}
+
+ul.addEventListener("click", handleUlClick)
+button.addEventListener("click", addListAfterClik);
+input.addEventListener("keypress", addListAfterKeypress);
