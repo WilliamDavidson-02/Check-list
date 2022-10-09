@@ -1,6 +1,6 @@
-body {
-    margin: 0;
+* {
     font-family: 'Courier New', Courier, monospace;
+    overflow-x: hidden;
 }
 
 .container {
@@ -10,11 +10,24 @@ body {
     margin-top: 200px;
 }
 
+h1, p {
+    text-align: center;
+}
+
+.input {
+    display: flex;
+    justify-content: space-between;
+}
+
 button, input {
     border-radius: 10px;
     border: none;
     background-color: rgba(128, 128, 128, 0.3);
     padding: 10px;
+}
+
+input {
+    color: black;
 }
 
 button {
@@ -26,6 +39,12 @@ button {
 li {
     margin: 5px 0px;
     cursor: pointer;
+    list-style: none;
+}
+
+ul {
+    width: 250px;
+    padding: 0;
 }
 
 .done {
@@ -37,6 +56,12 @@ button:hover {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-#userinput, #enter {
-    font-family: 'Courier New', Courier, monospace;
+.wrapper, .taskClass {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delClass {
+    margin: 5px 0px;
 }
